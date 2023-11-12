@@ -8,30 +8,33 @@
   <div class="card-body" *ngIf="car">
     <h5 class="card-title">{{ car.brandName }} {{ car.name }}</h5>
     <p class="card-text">{{ car.description }}</p>
-    <a href="#" class="btn btn-primary">Back</a>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Brand Name</th>
-          <th>Color Name</th>
-          <th>Car Name</th>
-          <th>Model Year</th>
-          <th>Daily Price</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ car.id }}</td>
-          <td>{{ car.brandName }}</td>
-          <td>{{ car.colorName }}</td>
-          <td>{{ car.name }}</td>
-          <td>{{ car.modelYear }}</td>
-          <td>{{ car.dailyPrice }}</td>
-          <td>{{ car.description }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <a routerLink="/cars" class="btn btn-secondary">Back</a>
+    <div class="p-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Brand Name</th>
+            <th>Color Name</th>
+            <th>Car Name</th>
+            <th>Model Year</th>
+            <th>Daily Price</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ car.id }}</td>
+            <td>{{ car.brandName }}</td>
+            <td>{{ car.colorName }}</td>
+            <td>{{ car.name }}</td>
+            <td>{{ car.modelYear }}</td>
+            <td>{{ car.dailyPrice | currency }}</td>
+            <td>{{ car.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <app-add-rent *ngIf="car" [carId]="car.id"></app-add-rent>
 </div>

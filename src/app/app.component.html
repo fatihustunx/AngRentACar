@@ -2,22 +2,31 @@
     <app-navi></app-navi>
   <div class="row">
     <div class="col-md-4">
-      <div>
+      <div class="p-3">
         <app-brand></app-brand>
       </div>
-      <div>
+      <div class="p-3">
         <app-color></app-color>
       </div>
 
-      <div>
+      <div class="p-3">
         <app-customer></app-customer>
+      </div>
+      <div class="p-3">
+        <ul class="list-group">
+          <li
+            routerLink="/rentals"
+            routerLinkActive="list-group-item-dark"
+            [routerLinkActiveOptions]="{exact:true}"
+            class="list-group-item"
+          >
+            Rentals
+          </li>
+        </ul>
       </div>
     </div>
     <div class="col-md-8">
       <router-outlet></router-outlet>
     </div>
-  </div>
-  <div>
-    <app-rental></app-rental>
   </div>
 </div>

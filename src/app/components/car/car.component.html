@@ -1,26 +1,92 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Brand Name</th>
-      <th>Color Name</th>
-      <th>Car Name</th>
-      <th>Model Year</th>
-      <th>Daily Price</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr 
-    routerLink="/cars/{{ car.id }}" 
-    *ngFor="let car of cars">
-      <td>{{ car.id }}</td>
-      <td>{{ car.brandName }}</td>
-      <td>{{ car.colorName }}</td>
-      <td>{{ car.name }}</td>
-      <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice }}</td>
-      <td>{{ car.description }}</td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Search Car...</label>
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterText"
+      placeholder="Enter search car name's"
+    />
+  </div>
+
+  <div *ngIf="filterText" class="alert alert-success">
+    You searched for {{ filterText }}
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <select
+        class="form-select"
+        [(ngModel)]="brandId"
+        aria-label="Default select example"
+      >
+        <option value="-1" selected>Brands</option>
+        <option *ngFor="let brand of brands" value="{{ brand.id }}">
+          {{ brand.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select
+        class="form-select"
+        [(ngModel)]="colorId"
+        aria-label="Default select example"
+      >
+        <option value="-1" selected>Colors</option>
+        <option *ngFor="let color of colors" value="{{ color.id }}">
+          {{ color.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <button
+        routerLink="/cars/filter/{{ brandId }}/{{ colorId }}"
+        type="button"
+        class="btn btn-secondary"
+      >
+        Filter
+      </button>
+    </div>
+    <div class="col-md-1">
+      <button routerLink="/cars" type="button" class="btn btn-secondary">
+        Clean
+      </button>
+    </div>
+  </div>
+
+  <div class="p-3">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Brand Name</th>
+        <th>Color Name</th>
+        <th>Car Name</th>
+        <th>Model Year</th>
+        <th>Daily Price</th>
+        <th>Description</th>
+        <th>Go & Rent!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        routerLink="/cars/{{ car.id }}"
+        *ngFor="let car of cars | filterCars : filterText"
+      >
+        <td>{{ car.id }}</td>
+        <td>{{ car.brandName }}</td>
+        <td>{{ car.colorName }}</td>
+        <td>{{ car.name }}</td>
+        <td>{{ car.modelYear }}</td>
+        <td>{{ car.dailyPrice 
+          | currency }}</td>
+        <td>{{ car.description }}</td>
+        <td><button routerLink="/cars/{{car.id}}" type="button" class="btn btn-secondary">
+          Go & Rent!
+        </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

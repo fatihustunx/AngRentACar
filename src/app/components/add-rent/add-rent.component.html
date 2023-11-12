@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <label for="rentDayInput" class="form-label">Rent Day</label>
+  </div>
+  <div class="col-md-4">
+    <label for="returnDayInput" class="form-label">Return Day</label>
+  </div>
+</div>
+<div class="row justify-content-center p-3">
+  <div class="col-md-4">
+    <input
+      [(ngModel)]="rentDay"
+      type="datetime"
+      class="form-control"
+      id="rentDayInput"
+      placeholder="dd/MM/yyyy"
+    />
+  </div>
+  <div class="col-md-4">
+    <input
+      [(ngModel)]="returnDay"
+      type="datetime"
+      class="form-control"
+      id="returnDayInput"
+      placeholder="dd/MM/yyyy"
+    />
+  </div>
+  <div class="col-md-1">
+    <!-- Button trigger modal -->
+    <button
+      (click)="addRental()"
+      class="btn btn-success"
+      type="button"
+    >
+      Rent
+    </button>
+  </div>
+</div>

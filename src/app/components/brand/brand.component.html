@@ -1,19 +1,18 @@
 <ul class="list-group">
   <li
   routerLink="/cars"
-  [class]="getCurrentAllBrandClass()"
+  routerLinkActive="list-group-item-dark"
+  [routerLinkActiveOptions]="{exact:true}"
+  class="list-group-item"
   >
     All Brands
   </li>
   <li
-    (click)="setCurrentBrand(brand)"
-    [class]="getCurrentBrand(brand)"
+  class="list-group-item"
     routerLink="/cars/brands/{{brand.id}}"
+    routerLinkActive="list-group-item-dark"
     *ngFor="let brand of brands"
   >
     {{ brand.name }}
   </li>
 </ul>
-
-<h6 *ngIf="currentBrand">{{currentBrand.name}} is selected.</h6>
-
