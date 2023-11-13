@@ -6,7 +6,7 @@ import { Rental } from '../models/rental';
 import { ResponseModel } from '../models/responseModel';
 import { AddRent } from '../models/requests/add-rent';
 import { GetResponseModel } from '../models/getResponseModel';
-import { RentForAdd } from '../models/rentForADd';
+import { RentForAdd } from '../models/rentForAdd';
 
 @Injectable({
   providedIn: 'root'

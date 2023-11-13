@@ -19,7 +19,6 @@ import { FilterCarsPipe } from './pipes/filter-cars.pipe';
 import { AddRentComponent } from './components/add-rent/add-rent.component';
 import { SortDatesPipe } from './pipes/sort-dates.pipe';
 import { PaymentComponent } from './components/payment/payment.component';
-import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,6 @@ import { ModalComponent } from './components/modal/modal.component';
     AddRentComponent,
     SortDatesPipe,
     PaymentComponent,
-    ModalComponent
   ],
   imports: [
     BrowserModule,

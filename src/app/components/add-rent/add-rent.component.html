@@ -14,6 +14,7 @@
       class="form-control"
       id="rentDayInput"
       placeholder="dd/MM/yyyy"
+      [disabled]="isState"
     />
   </div>
   <div class="col-md-4">
@@ -23,16 +24,33 @@
       class="form-control"
       id="returnDayInput"
       placeholder="dd/MM/yyyy"
+      [disabled]="isState"
     />
   </div>
-  <div class="col-md-1">
+  <div class="col-md-2">
     <!-- Button trigger modal -->
     <button
+      *ngIf="!isState"
       (click)="addRental()"
       class="btn btn-success"
       type="button"
     >
       Rent
     </button>
+    <button
+      *ngIf="isState"
+      class="btn btn-warning"
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Go To Pay
+    </button>
   </div>
 </div>
+
+<app-payment
+  *ngIf="getResponseModel && getResponseModel.data"
+  [rentId]="getResponseModel.data.id"
+  [totalCost]="getResponseModel.data.totalCost"
+></app-payment>

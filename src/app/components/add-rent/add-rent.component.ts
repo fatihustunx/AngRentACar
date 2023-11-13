@@ -5,7 +5,7 @@ import { RentalService } from 'src/app/services/rental.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { GetResponseModel } from 'src/app/models/getResponseModel';
-import { RentForAdd } from 'src/app/models/rentForADd';
+import { RentForAdd } from 'src/app/models/rentForAdd';
 
 @Component({
   selector: 'app-add-rent',
@@ -24,6 +24,8 @@ export class AddRentComponent {
   rentDay: string;
   returnDay: string;
 
+  isState:boolean;
+
   @Input() carId: number;
 
   getResponseModel: GetResponseModel<RentForAdd>;
@@ -34,6 +36,7 @@ export class AddRentComponent {
 
     if(this.rentDay==null && this.returnDay==null){
       this.toastrService.error("Error");
+      this.isState=false;
       return;
     }
 
@@ -48,12 +51,13 @@ export class AddRentComponent {
           'Rental is success.',
           'Success Rental Operations'
         );
-        this.router.navigate(['/payofrents/pay']);
+        this.isState=true;
       } else {
         this.toastrService.error(
           this.getResponseModel.message,
           'Error Rental Operations'
         );
+        this.isState=false;
       }
     });
   }

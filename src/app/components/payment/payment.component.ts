@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Pay } from 'src/app/models/requests/pay';
 import { ResponseModel } from 'src/app/models/responseModel';
@@ -14,7 +14,6 @@ export class PaymentComponent {
   constructor(
     private paymentService: PaymentService,
     private toastrService: ToastrService,
-    private activatedRoute:ActivatedRoute,
     private router: Router
   ) {}
 
@@ -45,9 +44,5 @@ export class PaymentComponent {
         );
       }
     });
-  }
-
-  get(){
-    console.log(this.totalCost);
   }
 }
