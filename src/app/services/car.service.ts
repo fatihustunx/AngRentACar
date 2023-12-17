@@ -5,6 +5,8 @@ import { ListResponseModel } from '../models/listResponseModel';
 import { Car } from '../models/car';
 import { CarWithImg } from '../models/carWithImg';
 import { GetResponseModel } from '../models/getResponseModel';
+import { ResponseModel } from '../models/responseModel';
+import { AddCar } from '../models/requests/add-car';
 
 @Injectable({
   providedIn: 'root',
@@ -42,4 +44,10 @@ export class CarService {
       this.apiUrl + '/getbyfilter?brandId=' + brandId + '&colorId=' + colorId;
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
+
+  add(car:AddCar) : Observable<ResponseModel> {
+    var newPath = this.apiUrl + '/add';
+    return this.httpClient.post<ResponseModel>(newPath,car);
+  }
+  
 }

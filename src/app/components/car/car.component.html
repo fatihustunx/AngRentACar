@@ -71,7 +71,7 @@
     </thead>
     <tbody>
       <tr
-        routerLink="/cars/{{ car.id }}"
+        routerLink="/cars/get/{{ car.id }}"
         *ngFor="let car of cars | filterCars : filterText"
       >
         <td>{{ car.id }}</td>
@@ -82,7 +82,7 @@
         <td>{{ car.dailyPrice 
           | currency }}</td>
         <td>{{ car.description }}</td>
-        <td><button routerLink="/cars/{{car.id}}" type="button" class="btn btn-secondary">
+        <td><button routerLink="/cars/get/{{car.id}}" type="button" class="btn btn-secondary">
           Go & Rent!
         </button></td>
       </tr>

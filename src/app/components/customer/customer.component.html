@@ -1,3 +1,9 @@
 <ul class="list-group">
-    <li *ngFor="let customer of customers" class="list-group-item">{{customer.companyName}}</li>
-  </ul>
+  <li
+    *ngFor="let customer of customers"
+    class="list-group-item"
+    routerLink="admin"
+  >
+    {{ customer.companyName }}
+  </li>
+</ul>
